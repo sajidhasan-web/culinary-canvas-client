@@ -1,16 +1,29 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
+import { AuthContext } from "../../Provider/FirebaseProvider";
+import toast from "react-hot-toast";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { user, logOut }  = useContext(AuthContext)
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
     }
+
+    const handleSignOut = () => {
+      logOut()
+        .then(() => {
+          toast.success("User signed out successfully");
+        })
+        .catch((error) => {
+          toast.error(error.message);
+        });
+    };
 
   return (
     <nav className="relative bg-white shadow dark:bg-gray-800">
@@ -98,13 +111,18 @@ const Navbar = () => {
               >
                   <div className="relative inline-block">
             {/* Dropdown toggle button */}
-            <div onClick={toggleDropdown} className="w-12 h-12 overflow-hidden border-2 border-gray-400 rounded-full cursor-pointer">
-                <img
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
-                    className="object-cover w-full h-full"
-                    alt="avatar"
-                />
-            </div>
+            {
+              user && <div onClick={toggleDropdown} className="w-12 h-12 overflow-hidden border-2 border-gray-400 rounded-full cursor-pointer">
+              <img
+                   className="w-full h-full rounded-full"
+                   src={user.photoURL}
+                   alt=""
+                   title={user?.displayName}
+                 />
+               
+            
+         </div>
+            }
 
             {/* Dropdown menu */}
             {isDropdownOpen && (
@@ -121,14 +139,14 @@ const Navbar = () => {
 
 
                 <h3 className="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">
-                  Khatab wedaa
+                 {user?.displayName}
                 </h3>
               </button>
-              <Link
-              to={"/sign-in"}
-              >   
-              <button className="btn bg-[#8B755A] text-white">Login</button>
-              </Link>
+              {
+                user ? <button onClick={handleSignOut} className="btn bg-[#8B755A] text-white">Logout</button> : <Link
+                to={"/sign-in"}> <button className="btn bg-[#8B755A] text-white">Login</button>
+                </Link>
+              }
             </div>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import { PropTypes } from "prop-types";
+
 const PageHeaderBanner = ({ pageName }) => {
   const bannerStyle = {
     backgroundImage: `url(https://i.ibb.co/CmzzT4d/chefs-demonstrating-cooking-skills-contest-1.jpg)`,
@@ -37,6 +39,11 @@ const PageHeaderBanner = ({ pageName }) => {
       </div>
   
   );
+};
+
+
+PageHeaderBanner.propTypes = {
+  pageName: PropTypes.string.isRequired,
 };
 
 export default PageHeaderBanner;
