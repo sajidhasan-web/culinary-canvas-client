@@ -1,0 +1,45 @@
+[
+    {
+      "name": "Margherita Pizza",
+      "image": "https://i.ibb.co/ftmnFhT/Spaghetti-Carbonara.jpg",
+      "category": "Pizza",
+      "price": 10.99,
+      "purchaseCount": 102
+    },
+    {
+      "name": "Chicken Parmesan",
+      "image": "https://i.ibb.co/ftmnFhT/Spaghetti-Carbonara.jpg",
+      "category": "Italian",
+      "price": 15.99,
+      "purchaseCount": 98
+    },
+    {
+      "name": "Sushi Roll",
+      "image": "https://i.ibb.co/ftmnFhT/Spaghetti-Carbonara.jpg",
+      "category": "Japanese",
+      "price": 12.99,
+      "purchaseCount": 94
+    },
+    {
+      "name": "Cheeseburger",
+      "image": "https://i.ibb.co/ftmnFhT/Spaghetti-Carbonara.jpg",
+      "category": "Burgers",
+      "price": 8.99,
+      "purchaseCount": 88
+    },
+    {
+      "name": "Pad Thai",
+      "image": "https://i.ibb.co/ftmnFhT/Spaghetti-Carbonara.jpg",
+      "category": "Thai",
+      "price": 11.99,
+      "purchaseCount": 85
+    },
+    {
+      "name": "Tiramisu",
+      "image": "https://i.ibb.co/ftmnFhT/Spaghetti-Carbonara.jpg",
+      "category": "Dessert",
+      "price": 7.99,
+      "purchaseCount": 80
+    }
+  ]
+  
