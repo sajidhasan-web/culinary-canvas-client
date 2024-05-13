@@ -74,12 +74,12 @@ const Navbar = () => {
               >
                 All Foods
               </Link>
-              <a
-                href="#"
+              <Link
+                to={"/gallery"}
                 className=" px-3 py-2 mx-3 mt-2 text-white lg:text-gray-700 transition-colors duration-300 transform  lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 Gallery
-              </a>
+              </Link>
               <a
                 href="#"
                 className="lg:hidden px-3 py-2 mx-3 mt-2 text-white lg:text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"

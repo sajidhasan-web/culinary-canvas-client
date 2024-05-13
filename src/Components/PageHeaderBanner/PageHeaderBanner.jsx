@@ -1,6 +1,6 @@
 import { PropTypes } from "prop-types";
 
-const PageHeaderBanner = ({ pageName }) => {
+const PageHeaderBanner = ({ pageName, page }) => {
   const bannerStyle = {
     backgroundImage: `url(https://i.ibb.co/CmzzT4d/chefs-demonstrating-cooking-skills-contest-1.jpg)`,
     backgroundSize: "cover",
@@ -35,7 +35,10 @@ const PageHeaderBanner = ({ pageName }) => {
    
       <div style={bannerStyle}>
         <div style={overlayStyle}></div>
-        <div style={textStyle}>{pageName}</div>
+        <div style={textStyle}>
+          <h1>{pageName}</h1>
+          <p className="text-sm">Home | {page}</p>
+        </div>
       </div>
   
   );

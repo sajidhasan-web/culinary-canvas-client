@@ -4,6 +4,9 @@ import { AuthContext } from "../../Provider/FirebaseProvider";
 import toast from "react-hot-toast";
 
 const FoodPurchase = () => {
+    
+    const [quantity, setQuantity] = useState(1); 
+
   const food = useLoaderData();
   const { user } = useContext(AuthContext);
   const [buyingDate, setBuyingDate] = useState("");
@@ -27,7 +30,7 @@ const FoodPurchase = () => {
     setBuyingDate(formattedDate); 
   }, []);
 
-  const handlePurchase = (e) => {
+  const handlePurchase = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -46,24 +49,39 @@ const FoodPurchase = () => {
       buyingDate,
     };
 
-    console.log(foodPurchase);
-
-    fetch(`${import.meta.env.VITE_API_URL}/Purchases`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(foodPurchase),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+    try {
+        // Store purchase details in the purchases collection
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/purchases`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(foodPurchase),
+        });
+        const data = await response.json();
+        // console.log(data);
         if (data.insertedId) {
-          toast.success("Food Purchase successfully");
-          navigate("/all-foods");
+            // If purchase is successful, update the quantity of the food item
+            const quantityData = {
+                quantity: quantity
+            };
+            await fetch(`${import.meta.env.VITE_API_URL}/foods/${food._id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(quantityData),
+            });
+            
+            toast.success("Food Purchase successful");
+            navigate("/all-foods");
         }
-      });
-  };
+    } catch (error) {
+        console.error('Error purchasing food:', error);
+        toast.error('Error purchasing food. Please try again later.');
+    }
+};
+
 
   return (
     <div className="container mx-auto p-6">
@@ -98,6 +116,7 @@ const FoodPurchase = () => {
             <input
               type="number"
               name="quantity"
+              value={quantity} onChange={(e) => setQuantity(e.target.value)}
               required
               className="w-full bg-transparent rounded-md border border-stroke dark:border-dark-3 py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 disabled:border-gray-2"
             />

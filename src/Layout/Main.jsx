@@ -43,7 +43,7 @@ const Main = () => {
       </div>
       }
       
-      <div className="min-h-[calc(100vh-321px)]">
+      <div className="min-h-[calc(100vh-329px)]">
         {/* Outlet */}
         <Outlet></Outlet>
       </div>

@@ -23,7 +23,7 @@ const AllFoods = () => {
 
   return (
     <div>
-      <PageHeaderBanner pageName={"All Foods"} />
+      <PageHeaderBanner pageName={"All Foods"} page={'All Foods'}/>
       <section className="bg-gray-2 pb-10 pt-20 dark:bg-dark lg:pb-20 lg:pt-[120px]">
         <div className="container mx-auto p-6">
           {/* Search input field */}
