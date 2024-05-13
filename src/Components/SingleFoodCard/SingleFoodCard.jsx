@@ -15,7 +15,7 @@ const SingleFoodCard = ({ food }) => {
             <div className="flex justify-between items-center mt-4 font-semibold md:text-xl">
               <p>
                 Price:{" "}
-                <span className="text-[#8B755A] opacity-70">{price}</span>
+                <span className="text-[#8B755A] opacity-70">${price}</span>
               </p>
               <p>
                 Quantity:{" "}
