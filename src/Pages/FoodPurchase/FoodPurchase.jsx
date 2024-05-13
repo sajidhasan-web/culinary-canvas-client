@@ -8,10 +8,10 @@ const FoodPurchase = () => {
   const { user } = useContext(AuthContext);
   const [buyingDate, setBuyingDate] = useState("");
   const navigate = useNavigate();
-  console.log(user);
+  
 
   useEffect(() => {
-    // Set buying date to current date and time when the component mounts
+
     const currentDate = new Date();
     // Format the date and time
     const options = {
@@ -20,11 +20,11 @@ const FoodPurchase = () => {
       day: "2-digit",
       hour: "2-digit",
       minute: "2-digit",
-      hour12: true, // Use 12-hour clock format
+      hour12: true, 
     };
     const formattedDate = currentDate.toLocaleString("en-US", options);
 
-    setBuyingDate(formattedDate); // Convert date to ISO string format
+    setBuyingDate(formattedDate); 
   }, []);
 
   const handlePurchase = (e) => {
