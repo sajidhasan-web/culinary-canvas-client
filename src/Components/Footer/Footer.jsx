@@ -4,20 +4,21 @@ const Footer = () => {
   return (
     <footer className="bg-white dark:bg-gray-900">
       <div className="container p-6 mx-auto">
+      <hr className="h-px my-6 bg-gray-200 border-none dark:bg-gray-700" />
         <div className="lg:flex">
           <div className="w-full -mx-6 lg:w-2/5">
             <div className="px-6">
-              <a href="#">
+              <a href="#" className="flex gap-2 items-center">
                 <img
-                  className="w-auto h-7"
-                  src="https://merakiui.com/images/full-logo.svg"
+                  className="w-auto h-10"
+                  src={'logo.png'}
                   alt=""
                 />
+                <h1 className="text-2xl md:text-3xl font-bold">Culinary<span className="text-[#8B755A]">Canvas</span></h1>
               </a>
 
               <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">
-                Join 31,000+ other and never miss out on new tips, tutorials,
-                and more.
+              we are passionate about bringing you the finest culinary experiences. Explore our diverse selection of delicious dishes, carefully curated to satisfy every palate. 
               </p>
 
               <div className="flex mt-6 -mx-2">

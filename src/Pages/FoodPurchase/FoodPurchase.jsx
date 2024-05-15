@@ -12,7 +12,7 @@ const FoodPurchase = () => {
   const [buyingDate, setBuyingDate] = useState("");
   const navigate = useNavigate();
     
-
+  console.log(food);
  
 
   useEffect(() => {
@@ -44,6 +44,7 @@ const FoodPurchase = () => {
     const buyerName = user?.displayName;
     const buyerEmail = user?.email;
     const buyingDate = form.buyingDate.value;
+    const image = food?.image
      
     
     
@@ -51,6 +52,7 @@ const FoodPurchase = () => {
     const foodPurchase = {
       name,
       price,
+      image,
       quantity,
       buyerName,
       buyerEmail,

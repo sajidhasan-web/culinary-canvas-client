@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "../../Provider/FirebaseProvider";
 
 const UpdateFood = () => {
-  
+    const { user } = useContext(AuthContext)
     const [food, setFood ] = useState({})
     const {id} = useParams()
     const navigate = useNavigate()
@@ -17,7 +18,7 @@ const UpdateFood = () => {
             })
             .catch(error => {
                 console.error('Error fetching food data:', error);
-                // Handle error, maybe show a toast or some feedback to the user
+  
             });
     }, [id]);
     
@@ -58,14 +59,9 @@ const UpdateFood = () => {
         .then((data) => {
           if (data.modifiedCount > 0) {
             toast.success("Food updated successfully");
-            navigate("/my-added-food")
+            navigate(`/my-added-food/${user.email}`)
           }
         })
-        .catch((error) => {
-          console.error('Error updating food:', error);
-          toast.error('Failed to update food');
-          navigate('/')
-        });
     };
 
   return (

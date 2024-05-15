@@ -12,6 +12,7 @@ import AddFood from "../Pages/AddFood/AddFood";
 import MyAddedFood from "../Pages/MyAddedFood/MyAddedFood";
 import MyOrderedFood from "../Pages/MyOrderedFood/MyOrderedFood";
 import UpdateFood from "../Pages/UpdateFood/UpdateFood";
+import PrivateRoute from "../PrivateRoute/RrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
       children:[
         {
             path: "/",
-            element:<Home/>
+            element:<Home/>,
+            loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/top-foods`)
         },
         {
             path:"/all-foods",
@@ -54,13 +56,14 @@ const router = createBrowserRouter([
           element: <AddFood/>
         },
         {
-          path: "/my-added-food",
-          element: <MyAddedFood/>,
+          path: "/my-added-food/:email",
+          element: <PrivateRoute><MyAddedFood/></PrivateRoute>,
+    
           
         },
         {
           path: "/my-ordered-food",
-          element: <MyOrderedFood/>
+          element: <PrivateRoute><MyOrderedFood/></PrivateRoute>,
         },
         {
           path: "/update-food/:id",

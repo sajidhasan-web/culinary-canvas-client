@@ -130,7 +130,7 @@ const Navbar = () => {
                     onClick={() => setIsDropdownOpen(false)}
                     className="hidden lg:block absolute right-0 z-20 w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl dark:bg-gray-800"
                 >
-                    <Link to={"/my-added-food"} className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"> My added food items </Link>
+                    <Link to={`/my-added-food/${user?.email}`} className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"> My added food items </Link>
                     <Link to={"/add-food"} className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"> Add a food item </Link>
                     <Link to={"/my-ordered-food"} className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"> My ordered food </Link>
                 </div>

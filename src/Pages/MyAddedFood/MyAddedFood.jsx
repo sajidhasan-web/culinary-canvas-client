@@ -2,27 +2,56 @@ import { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../../Provider/FirebaseProvider";
 
-import { Link } from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
 
 const MyAddedFood = () => {
   const [foods, setFoods] = useState([]);
   
   const { user } = useContext(AuthContext);
+  const { email } = useParams()
+
+  console.log(user);
+  
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/my-added-food/${user?.email}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/my-added-food/${email}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
+
     })
       .then((res) => res.json())
       .then((foods) => {
         setFoods(foods)
       });
-  }, [user?.email]);
+  }, [email]);
  
-
+ 
+  const handleDeleteFood = (id) => {
+    fetch(`${import.meta.env.VITE_API_URL}/deleteFood/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to delete food");
+        }
+        return res.json();
+      })
+      .then((result) => {
+        console.log(result);
+       
+        setFoods((prevFoods) => prevFoods.filter((fo) => fo._id !== id));
+      })
+      .catch((error) => {
+        console.error("Error deleting food:", error);
+      });
+  };
+  
+  
   
 
 
@@ -88,7 +117,7 @@ const MyAddedFood = () => {
                   : food.description}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                <button className="btn-sm bg-[#8B755A] 4 text-white rounded-md font-semibold">delete</button>
+                <button onClick={()=>handleDeleteFood(food._id)} className="btn-sm bg-[#8B755A] 4 text-white rounded-md font-semibold">delete</button>
                 <Link to={`/update-food/${food._id}`}>
                 <button
                   className="btn-sm bg-[#8B755A] 4 text-white rounded-md font-semibold"
