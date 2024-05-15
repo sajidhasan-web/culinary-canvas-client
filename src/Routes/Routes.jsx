@@ -11,6 +11,7 @@ import Error from "../Pages/Error/Error";
 import AddFood from "../Pages/AddFood/AddFood";
 import MyAddedFood from "../Pages/MyAddedFood/MyAddedFood";
 import MyOrderedFood from "../Pages/MyOrderedFood/MyOrderedFood";
+import UpdateFood from "../Pages/UpdateFood/UpdateFood";
 
 const router = createBrowserRouter([
     {
@@ -60,6 +61,12 @@ const router = createBrowserRouter([
         {
           path: "/my-ordered-food",
           element: <MyOrderedFood/>
+        },
+        {
+          path: "/update-food/:id",
+          element:<UpdateFood/>,
+          // loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/food/${params.id}`)
+          
         }
       ]
     },

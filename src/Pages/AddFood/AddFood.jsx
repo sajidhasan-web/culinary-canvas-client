@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/FirebaseProvider";
-import { json } from "react-router-dom";
 import toast from "react-hot-toast";
 
 
@@ -15,6 +14,7 @@ const AddFood = () => {
         const price = form.price.value;
         const image = form.imageURL.value;
         const quantity = form.quantity.value;
+        const category = form.category.value;
         const origin = form.origin.value;
         const description = form.description.value;
         const userEmail = user?.email
@@ -22,8 +22,9 @@ const AddFood = () => {
         const addFood = {
             name: name,
             image: image,
-            price: parseFloat(price),
-            quantity: parseFloat(quantity),
+            category: category,
+            price: price,
+            quantity: quantity,
             origin: origin,
             description: description,
             userEmail: userEmail,
@@ -98,13 +99,25 @@ const AddFood = () => {
             className="w-full bg-transparent rounded-md border border-stroke dark:border-dark-3 py-2 px-4 text-dark-6 outline-none transition focus:border-primary active:border-primary"
           />
         </div>
-        <div className=" rounded-md col-span-2">
+        <div className=" rounded-md col-span-2 md:col-span-1">
           <label className="block mb-2 text-base font-medium text-dark dark:text-white">
             Food Origin
           </label>
           <input
             type="text"
             name="origin"
+            
+            required
+            className="w-full bg-transparent rounded-md border border-stroke dark:border-dark-3 py-2 px-4 text-dark-6 outline-none transition focus:border-primary active:border-primary"
+          />
+        </div>
+        <div className=" rounded-md col-span-2 md:col-span-1">
+          <label className="block mb-2 text-base font-medium text-dark dark:text-white">
+            Food Category
+          </label>
+          <input
+            type="text"
+            name="category"
             
             required
             className="w-full bg-transparent rounded-md border border-stroke dark:border-dark-3 py-2 px-4 text-dark-6 outline-none transition focus:border-primary active:border-primary"
