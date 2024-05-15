@@ -30,7 +30,8 @@ const FoodDetails = () => {
               </p>
               <p className="mt-3">
                 Made by:{" "}
-                <span className="text-[#8B755A] opacity-70">{food.madeBy}</span>
+                <span className="text-[#8B755A] opacity-70">{food?.userName || food.madeBy}</span>
+                
               </p>
               <p className="mt-3">
               Food Origin:{" "}

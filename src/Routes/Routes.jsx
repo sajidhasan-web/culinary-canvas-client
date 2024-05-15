@@ -7,11 +7,16 @@ import Signup from "../Pages/Signup/Signup";
 import FoodDetails from "../Components/FoodDetails/FoodDetails";
 import FoodPurchase from "../Pages/FoodPurchase/FoodPurchase";
 import Gallery from "../Pages/Gallery/Gallery";
+import Error from "../Pages/Error/Error";
+import AddFood from "../Pages/AddFood/AddFood";
+import MyAddedFood from "../Pages/MyAddedFood/MyAddedFood";
+import MyOrderedFood from "../Pages/MyOrderedFood/MyOrderedFood";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <Error></Error>,
       children:[
         {
             path: "/",
@@ -42,6 +47,19 @@ const router = createBrowserRouter([
         {
           path: "/gallery",
           element: <Gallery/>
+        },
+        {
+          path:"/add-food",
+          element: <AddFood/>
+        },
+        {
+          path: "/my-added-food",
+          element: <MyAddedFood/>,
+          
+        },
+        {
+          path: "/my-ordered-food",
+          element: <MyOrderedFood/>
         }
       ]
     },

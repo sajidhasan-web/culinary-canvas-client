@@ -11,7 +11,9 @@ const FoodPurchase = () => {
   const { user } = useContext(AuthContext);
   const [buyingDate, setBuyingDate] = useState("");
   const navigate = useNavigate();
-  
+    
+
+ 
 
   useEffect(() => {
 
@@ -30,6 +32,9 @@ const FoodPurchase = () => {
     setBuyingDate(formattedDate); 
   }, []);
 
+  
+  
+
   const handlePurchase = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -39,6 +44,9 @@ const FoodPurchase = () => {
     const buyerName = user?.displayName;
     const buyerEmail = user?.email;
     const buyingDate = form.buyingDate.value;
+     
+    
+    
 
     const foodPurchase = {
       name,
@@ -65,6 +73,7 @@ const FoodPurchase = () => {
             const quantityData = {
                 quantity: quantity
             };
+            
             await fetch(`${import.meta.env.VITE_API_URL}/foods/${food._id}`, {
                 method: 'PATCH',
                 headers: {
@@ -72,9 +81,15 @@ const FoodPurchase = () => {
                 },
                 body: JSON.stringify(quantityData),
             });
+           
+            if (quantity < 0) {
+                console.log("Quantity:", quantity); // Check value of quantity
+                toast.error("Purchase unsuccessful: Quantity cannot be negative");
+            } else {
+                toast.success("Food Purchase successful");
+                navigate("/all-foods");
+            }
             
-            toast.success("Food Purchase successful");
-            navigate("/all-foods");
         }
     } catch (error) {
         console.error('Error purchasing food:', error);

@@ -80,24 +80,24 @@ const Navbar = () => {
               >
                 Gallery
               </Link>
-              <a
-                href="#"
+              <Link
+                to={"/my-added-food"}
                 className="lg:hidden px-3 py-2 mx-3 mt-2 text-white lg:text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                My added food items
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                 to={"/add-food"}
                 className="lg:hidden px-3 py-2 mx-3 mt-2 text-white lg:text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
               Add a food item
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to={"/my-ordered-food"}
                 className="lg:hidden px-3 py-2 mx-3 mt-2 text-white lg:text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
               My ordered food items
-              </a>
+              </Link>
              
              
               
@@ -130,9 +130,9 @@ const Navbar = () => {
                     onClick={() => setIsDropdownOpen(false)}
                     className="hidden lg:block absolute right-0 z-20 w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl dark:bg-gray-800"
                 >
-                    <Link href="#" className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"> My added food items </Link>
-                    <Link href="#" className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"> Add a food item </Link>
-                    <Link href="#" className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">  Add a food item </Link>
+                    <Link to={"/my-added-food"} className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"> My added food items </Link>
+                    <Link to={"/add-food"} className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"> Add a food item </Link>
+                    <Link to={"/my-ordered-food"} className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"> My ordered food </Link>
                 </div>
             )}
         </div>
