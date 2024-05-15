@@ -37,6 +37,10 @@ const FoodPurchase = () => {
 
   const handlePurchase = async (e) => {
     e.preventDefault();
+    if (food.quantity == 0) {
+      toast.error("This food item is currently unavailable");
+      return;
+  }
     const form = e.target;
     const name = form.name.value;
     const price = form.price.value;
@@ -84,13 +88,7 @@ const FoodPurchase = () => {
                 body: JSON.stringify(quantityData),
             });
            
-            if (quantity < 0) {
-                console.log("Quantity:", quantity); // Check value of quantity
-                toast.error("Purchase unsuccessful: Quantity cannot be negative");
-            } else {
-                toast.success("Food Purchase successful");
-                navigate("/all-foods");
-            }
+           
             
         }
     } catch (error) {
