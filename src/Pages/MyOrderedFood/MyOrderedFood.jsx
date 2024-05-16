@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/FirebaseProvider";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const MyOrderedFood = () => {
   const { user } = useContext(AuthContext);
@@ -44,6 +45,9 @@ const MyOrderedFood = () => {
 
   return (
     <div className="container p-6 mx-auto">
+        <Helmet>
+                 <title>CulinaryCanvas | My Ordered Food</title>
+            </Helmet>
       <table className="min-w-full divide-y divide-gray-200 overflow-x-auto">
         <thead className="bg-gray-50">
           <tr>

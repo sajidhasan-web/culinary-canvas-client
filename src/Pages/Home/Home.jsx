@@ -1,8 +1,8 @@
 import { Link, useLoaderData } from "react-router-dom";
-import { useState} from "react"; // Add this import if not already imported
 import SectionHead from "../../Components/SectionHead/SectionHead";
 import Slider from "../../Components/Slider/Slider";
 import SingleFoodCard from "../../Components/SingleFoodCard/SingleFoodCard";
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
    
@@ -12,6 +12,9 @@ const Home = () => {
 
     return (
         <div className="container p-6 mx-auto">
+            <Helmet>
+                 <title>CulinaryCanvas | Home</title>
+            </Helmet>
             <Slider />
             <div className="mt-8 md:mt-14 pb-8 md:pb-12">
                 <SectionHead 

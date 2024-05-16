@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import InputBox from "../Signin/InputBox";
 import { FaGithub } from "react-icons/fa";
 import PageHeaderBanner from "../../Components/PageHeaderBanner/PageHeaderBanner";
+import { Helmet } from "react-helmet-async";
 
 const Signup = () => {
   const { createUser, updateProfileInfo } = useContext(AuthContext);
@@ -55,6 +56,9 @@ const Signup = () => {
     <>
     <PageHeaderBanner pageName={'Sign up'}></PageHeaderBanner>
    <div className="flex justify-center my-10">
+   <Helmet>
+                 <title>CulinaryCanvas | Sign up</title>
+            </Helmet>
         <div className="bg-gray-1 border rounded-md dark:bg-dark  w-full lg:w-[40%]">
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">

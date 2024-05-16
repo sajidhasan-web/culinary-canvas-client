@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 const FoodPurchase = () => {
     
     const [quantity, setQuantity] = useState(1); 
+ 
 
   const food = useLoaderData();
   const { user } = useContext(AuthContext);
@@ -13,6 +14,7 @@ const FoodPurchase = () => {
   const navigate = useNavigate();
     
   console.log(food);
+ 
  
 
   useEffect(() => {
@@ -32,7 +34,9 @@ const FoodPurchase = () => {
     setBuyingDate(formattedDate); 
   }, []);
 
-  
+  if(!user){
+    navigate("/login");
+  }
   
 
   const handlePurchase = async (e) => {

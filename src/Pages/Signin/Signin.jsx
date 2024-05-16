@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import InputBox from "./InputBox";
 import PageHeaderBanner from "../../Components/PageHeaderBanner/PageHeaderBanner";
+import { Helmet } from "react-helmet-async";
 
 const Signin = () => {
 
@@ -68,6 +69,9 @@ const Signin = () => {
        <PageHeaderBanner pageName={'Sign In'}></PageHeaderBanner>
     
       <section className="overflow-hidden pt-10 pb-12  lg:pb-[90px] bg-white dark:bg-dark">
+      <Helmet>
+                 <title>CulinaryCanvas | Sign in</title>
+            </Helmet>
         <div className="container mx-auto">
           <div className="flex justify-between flex-col-reverse md:flex-row flex-wrap items-center  -mx-4">
             <div className="px-4 w-full lg:w-[40%]">

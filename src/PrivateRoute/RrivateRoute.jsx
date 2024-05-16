@@ -7,6 +7,7 @@ import { AuthContext } from "../Provider/FirebaseProvider";
 const PrivateRoute = ({ children }) => {
   const location = useLocation();
   const { user, loading} = useContext(AuthContext);
+  
   if (loading) {
     return (
       <div className="h-[calc(100vh-470px)] flex justify-center items-center">
@@ -14,9 +15,13 @@ const PrivateRoute = ({ children }) => {
       </div>
     );
   }
+
+
+
   if (!user) {
     return <Navigate to="/sign-in" state={location?.pathname || "/"} />;
   }
+  
   return (
     <div>
       {children}

@@ -3,11 +3,12 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/FirebaseProvider";
 
 import { Link, useParams} from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const MyAddedFood = () => {
   const [foods, setFoods] = useState([]);
   
-  const { user } = useContext(AuthContext);
+  const { user,loading } = useContext(AuthContext);
   const { email } = useParams()
 
   console.log(user);
@@ -52,11 +53,12 @@ const MyAddedFood = () => {
   };
   
   
-  
-
-
+ 
   return (
     <div className="container p-6 mx-auto">
+      <Helmet>
+                 <title>CulinaryCanvas | Sign in</title>
+            </Helmet>
       <table className="min-w-full divide-y divide-gray-200 overflow-x-auto">
         <thead className="bg-gray-50">
           <tr>
